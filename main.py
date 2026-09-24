@@ -15,20 +15,35 @@ if __name__ == "__main__":
     gerar_mapa(cidades)
 
     print("=== Relatório das cidades ===")
+    print(" ")
     qtd_cidades = estatisticas.contar_cidades(cidades)
 
     print("Quantidade de cidades:", qtd_cidades)
     nome_cidade, populacao = estatisticas.cidade_mais_populosa(cidades)
+    populacao_formatada = estatisticas.formatar_populacao(populacao)
 
     print("Cidade mais populosa:")
-    print(nome_cidade, "-", populacao, "habitantes")
+    print(nome_cidade, "-", populacao_formatada, "habitantes")
 
     nome_cidade, menor_populacao = estatisticas.cidade_menos_populosa(cidades)
+    populacao_formatada = estatisticas.formatar_populacao(menor_populacao)
     print("Cidade menos populosa:")
-    print(nome_cidade, "-", menor_populacao, "habitantes")
+    print(nome_cidade, "-", populacao_formatada, "habitantes")
 
     total = estatisticas.populacao_total(cidades)
+    populacao_formatada = estatisticas.formatar_populacao(total)
     print("População total:")
-    print(total, "habitantes")
-    for cidade in cidades:
-        mostrar_cidade(cidade)
+    print(populacao_formatada, "habitantes")
+
+    print(" ")
+    print("=== Cidades por população ===")
+    cidades_ordenadas = estatisticas.cidade_por_populacao(cidades)
+
+    for numero, cidade in enumerate(cidades_ordenadas, start=1):
+
+        populacao = estatisticas.formatar_populacao(cidade["populacao"])
+
+        print(numero, "-", cidade["nome"], "-", populacao, "habitantes")
+
+    # for cidade in cidades:
+        # mostrar_cidade(cidade)

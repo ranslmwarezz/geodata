@@ -1,4 +1,5 @@
 import folium
+from estatisticas import formatar_populacao
 
 def calcular_centroide(lista: list[dict]) -> tuple[float, float]:
     total = len(lista)
@@ -26,6 +27,6 @@ def gerar_mapa(lista: list[dict]):
 def gerar_popup(cidade: dict) -> str:      
     return (f"<b>{cidade['nome']}</b><br>"
             f"Estado: {cidade['estado']}<br><br>"
-            f"População: {cidade['populacao']}<br><br>"
+            f"População: {formatar_populacao(cidade['populacao'])}<br><br>"
             f"Latitude: {cidade['latitude']}<br><br>"
             f"Longitude: {cidade['longitude']}")
