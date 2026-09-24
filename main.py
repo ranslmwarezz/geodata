@@ -1,4 +1,5 @@
 import json
+import folium
 
 def mostrar_cidade(nome: str, estado: str, populacao: int, latitude: float, longitude: float):
     print(" ")
@@ -68,7 +69,28 @@ def gerar_geojson(lista: list[dict]) -> dict:
 
     return geo_json
 
+def calcular_centroide(lista: list[dict]) -> tuple[float, float]:
+    total = contar_cidades(lista)
+    soma_latitude = 0.0
+    soma_longitude = 0.0
 
+    for cidade in lista:
+        soma_latitude += cidade["latitude"]
+        soma_longitude += cidade["longitude"]
+
+    latitude_media = soma_latitude / total
+    longitude_media = soma_longitude / total
+
+    return latitude_media, longitude_media
+
+def gerar_mapa(lista: list[dict]):
+    latitude, longitude = calcular_centroide(lista)
+    mapa = folium.Map([latitude, longitude], zoom_start=6)
+    for cidade in lista:
+        infos = f"Nome: {cidade['nome']}, População: {cidade['populacao']}, Latitude: {cidade['latitude']}, Longitude: {cidade["longitude"]}" 
+        folium.Marker(location=[cidade["latitude"], cidade["longitude"]], popup=infos).add_to(mapa)
+
+    mapa.save("mapa.html")
 
 if __name__ == "__main__":
 
@@ -90,6 +112,8 @@ if __name__ == "__main__":
             json.dump(geojson, arquivo_geojson, indent=4, ensure_ascii=False)
     except IOError as erro:
         print(f"Ocorreu um erro de sistema/IO inesperado: {erro}")
+
+    gerar_mapa(cidades)
 
     print("=== Relatório das cidades ===")
     qtd_cidades = contar_cidades(cidades)
