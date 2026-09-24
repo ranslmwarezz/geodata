@@ -1,13 +1,13 @@
 import json
 import folium
 
-def mostrar_cidade(nome: str, estado: str, populacao: int, latitude: float, longitude: float):
+def mostrar_cidade(cidade: dict):
     print(" ")
-    print("Cidade:", nome)
-    print("Estado:", estado)
-    print("População:", populacao)
-    print("Latitude:", latitude)
-    print("Longitude:", longitude)
+    print("Cidade:", cidade['nome'])
+    print("Estado:", cidade['estado'])
+    print("População:", cidade['populacao'])
+    print("Latitude:", cidade['latitude'])
+    print("Longitude:", cidade['longitude'])
     print(" ")
 
 def contar_cidades(lista: list[dict]) -> int:
@@ -139,9 +139,4 @@ if __name__ == "__main__":
     print("População total:")
     print(total, "habitantes")
     for cidade in cidades:
-        mostrar_cidade(nome=cidade["nome"],
-            estado=cidade["estado"],
-            populacao=cidade["populacao"],
-            latitude=cidade["latitude"],
-            longitude=cidade["longitude"]
-            )
+        mostrar_cidade(cidade)
