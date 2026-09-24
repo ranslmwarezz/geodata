@@ -3,8 +3,12 @@ def contar_cidades(lista: list[dict]) -> int:
     return tamanho
 
 def cidade_mais_populosa(lista: list[dict]) -> tuple[str, int]:
-    maior_populacao = 0
-    nome_cidade = ""
+
+    if not lista:
+         return "", 0
+
+    maior_populacao = lista[0]["populacao"]
+    nome_cidade = lista[0]["nome"]
 
     for cidade in lista:
         if cidade["populacao"] > maior_populacao:
@@ -15,6 +19,9 @@ def cidade_mais_populosa(lista: list[dict]) -> tuple[str, int]:
     return nome_cidade, maior_populacao
 
 def cidade_menos_populosa(lista: list[dict]) -> tuple[str, int]:
+    if not lista:
+        return "", 0
+
     menor_populacao = lista[0]["populacao"]
     nome_cidade = lista[0]["nome"]
 
@@ -33,3 +40,10 @@ def populacao_total(lista: list[dict]) -> int:
 
 
     return total
+
+def cidade_por_populacao(lista: list[dict]) -> list[dict]:
+
+    return sorted(lista, key=lambda cidade: cidade['populacao'], reverse=True)
+
+def formatar_populacao(numero: int) -> str:
+    return f"{numero:,}".replace(",", ".")
