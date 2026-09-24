@@ -1,3 +1,5 @@
+import json
+
 def mostrar_cidade(nome: str, estado: str, populacao: int, latitude: float, longitude: float):
     print("Cidade:", nome)
     print("Estado:", estado)
@@ -8,27 +10,17 @@ def mostrar_cidade(nome: str, estado: str, populacao: int, latitude: float, long
 
 if __name__ == "__main__":
 
-    cidades = [{
-        "nome":"Aracaju",
-        "estado":"Sergipe",
-        "populacao":602757,
-        "latitude":-10.9472,
-        "longitude": -37.0731
-        },
+    try:
+    # r de read
+        with open("cidades.json", 'r', encoding='utf-8') as arquivo_json:
+            cidades = json.load(arquivo_json)
 
-        {"nome":"Recife",
-        "estado":"Pernambuco",
-        "populacao":1500000,
-        "latitude":-8.0476,
-        "longitude": -34.8770
-        },
-
-        {"nome":"Salvador",
-        "estado":"Bahia",
-        "populacao":2418005,
-        "latitude":-12.9714,
-        "longitude": -38.5014}
-        ]
+    except FileNotFoundError:
+        print("Arquivo não encontrado!")
+        exit(1)
+    except json.JSONDecodeError:
+        print("cidades.json possui JSON inválido. Verifique o arquivo!") 
+        exit(1)
 
     print("=== Relatório das cidades ===")
     for cidade in cidades:
