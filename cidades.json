@@ -1,0 +1,79 @@
+[
+  {
+    "nome": "Aracaju",
+    "estado": "Sergipe",
+    "populacao": 602757,
+    "latitude": -10.9472,
+    "longitude": -37.0731
+  },
+  {
+    "nome": "Recife",
+    "estado": "Pernambuco",
+    "populacao": 1500000,
+    "latitude": -8.0476,
+    "longitude": -34.877
+  },
+  {
+    "nome": "Salvador",
+    "estado": "Bahia",
+    "populacao": 2418005,
+    "latitude": -12.9714,
+    "longitude": -38.5014
+  },
+  {
+    "nome": "São Paulo",
+    "estado": "São Paulo",
+    "populacao": 12325232,
+    "latitude": -23.5505,
+    "longitude": -46.6333
+  },
+  {
+    "nome": "Rio de Janeiro",
+    "estado": "Rio de Janeiro",
+    "populacao": 6775561,
+    "latitude": -22.9068,
+    "longitude": -43.1729
+  },
+  {
+    "nome": "Belo Horizonte",
+    "estado": "Minas Gerais",
+    "populacao": 2521564,
+    "latitude": -19.9167,
+    "longitude": -43.9345
+  },
+  {
+    "nome": "Fortaleza",
+    "estado": "Ceará",
+    "populacao": 2686612,
+    "latitude": -3.7172,
+    "longitude": -38.5433
+  },
+  {
+    "nome": "Curitiba",
+    "estado": "Paraná",
+    "populacao": 1963726,
+    "latitude": -25.4284,
+    "longitude": -49.2733
+  },
+  {
+    "nome": "Manaus",
+    "estado": "Amazonas",
+    "populacao": 2219580,
+    "latitude": -3.119,
+    "longitude": -60.0217
+  },
+  {
+    "nome": "Belém",
+    "estado": "Pará",
+    "populacao": 1499641,
+    "latitude": -1.4558,
+    "longitude": -48.5039
+  },
+  {
+    "nome": "Natal",
+    "estado": "Rio Grande do Norte",
+    "populacao": 890480,
+    "latitude": -5.7945,
+    "longitude": -35.211
+  }
+]
