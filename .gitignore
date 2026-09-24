@@ -1,0 +1,33 @@
+.venv/
+
+# Python cache and generated files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments and secrets
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# Coverage and build artifacts
+.coverage
+.coverage.*
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Local editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local test script
+teste_mapa.py
