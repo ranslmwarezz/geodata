@@ -87,10 +87,17 @@ def gerar_mapa(lista: list[dict]):
     latitude, longitude = calcular_centroide(lista)
     mapa = folium.Map([latitude, longitude], zoom_start=6)
     for cidade in lista:
-        infos = f"Nome: {cidade['nome']}, População: {cidade['populacao']}, Latitude: {cidade['latitude']}, Longitude: {cidade["longitude"]}" 
+        infos = gerar_popup(cidade)
         folium.Marker(location=[cidade["latitude"], cidade["longitude"]], popup=infos).add_to(mapa)
 
     mapa.save("mapa.html")
+
+def gerar_popup(cidade: dict) -> str:      
+    return (f"<b>{cidade['nome']}</b><br>"
+            f"Estado: {cidade['estado']}<br><br>"
+            f"População: {cidade['populacao']}<br><br>"
+            f"Latitude: {cidade['latitude']}<br><br>"
+            f"Longitude: {cidade['longitude']}")
 
 if __name__ == "__main__":
 
