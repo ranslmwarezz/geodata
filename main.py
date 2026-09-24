@@ -45,10 +45,34 @@ def populacao_total(lista: list[dict]) -> int:
 
     return total
 
+def gerar_geojson(lista: list[dict]) -> dict:
+    geo_json = {
+        "type": "FeatureCollection",
+        "features": []
+    }
+
+    for cidade in lista:
+        feature_cidade = {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [cidade["longitude"], cidade["latitude"]]
+            },
+            "properties": {
+                "nome": cidade["nome"],
+                "estado": cidade["estado"],
+                "populacao": cidade["populacao"]
+            }
+        }
+        geo_json["features"].append(feature_cidade)
+
+    return geo_json
+
+
+
 if __name__ == "__main__":
 
     try:
-    # r de read
         with open("cidades.json", 'r', encoding='utf-8') as arquivo_json:
             cidades = json.load(arquivo_json)
 
@@ -58,6 +82,14 @@ if __name__ == "__main__":
     except json.JSONDecodeError:
         print("cidades.json possui JSON inválido. Verifique o arquivo!") 
         exit(1)
+
+    geojson = gerar_geojson(cidades)
+
+    try:
+        with open("cidades.geojson", "w", encoding="utf-8") as arquivo_geojson:
+            json.dump(geojson, arquivo_geojson, indent=4, ensure_ascii=False)
+    except IOError as erro:
+        print(f"Ocorreu um erro de sistema/IO inesperado: {erro}")
 
     print("=== Relatório das cidades ===")
     qtd_cidades = contar_cidades(cidades)
